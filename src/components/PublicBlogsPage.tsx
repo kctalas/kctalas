@@ -4,6 +4,7 @@ import { loadPublishedBlogs } from '../lib/loadPublicBlogs'
 import type { PublicBlogListRow } from '../lib/loadPublicBlogs'
 import { PublicBlogCard } from './PublicBlogCard'
 import { PageBanner } from './PageBanner'
+import { Seo } from './Seo'
 import { Skeleton } from './Skeleton'
 
 function PublicBlogCardSkeleton() {
@@ -54,6 +55,7 @@ export function PublicBlogsPage() {
 
   return (
     <>
+      <Seo title={t('blog')} description={t('seo.blog.description')} path="blog" />
       <PageBanner title={t('blog')} subtitle={t('blogSubtitle')} src="/home/banner_blog.png" />
       <main className="public-page-x w-full py-8 sm:py-10">
       <div>

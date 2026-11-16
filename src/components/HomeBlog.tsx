@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router'
 import { isLanguage, type Language } from '../i18n'
 import { contentImageUrl } from '../lib/contentImages'
+import { coverObjectPosition } from '../lib/coverPosition'
 import { formatProjectDate } from '../lib/formatDate'
 import { loadPublishedBlogs, type PublicBlogListRow } from '../lib/loadPublicBlogs'
 import { projectTitle } from '../lib/projects'
@@ -29,6 +30,7 @@ function HomeBlogCard({ blog }: { blog: PublicBlogListRow }) {
             src={contentImageUrl(blog.cover_image_path)}
             alt=""
             className="aspect-[2/1] w-full object-cover"
+            style={{ objectPosition: coverObjectPosition(blog.cover_card_position) }}
           />
         ) : (
           <div className="aspect-[2/1] w-full" aria-hidden />

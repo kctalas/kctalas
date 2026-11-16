@@ -1,6 +1,7 @@
 import type { Session } from '@supabase/supabase-js'
 import type { ContentKind } from './contentKind'
 import { contentKindConfig } from './contentKind'
+import { COVER_POSITION_CENTER, coverPositionColumns, type CoverPosition } from './coverPosition'
 import type { EditorBlock, EditorImageBlock, ProjectAuthor } from './projects'
 import { uploadContentImage } from './projectStorage'
 import { isValidSlug } from './slug'
@@ -15,6 +16,8 @@ export type ProjectFormState = {
   description_en: string
   description_sr: string
   cover_image_path: string | null
+  cover_banner_position: CoverPosition
+  cover_card_position: CoverPosition
   status: 'draft' | 'published'
   created_at: string | null
   updated_at: string | null
@@ -57,7 +60,7 @@ export async function isSlugTaken(
 
 export async function saveProject(input: SaveProjectInput): Promise<SaveProjectResult> {
   const { kind, session, form, blocks, pendingCoverFile, originalBlockDbIds } = input
-  const { table } = contentKindConfig[kind]
+  const { table, parentIdColumn } = contentKindConfig[kind]
 
   if (!isValidSlug(form.slug)) {
     return { ok: false, error: 'slugInvalid' }
@@ -85,6 +88,7 @@ export async function saveProject(input: SaveProjectInput): Promise<SaveProjectR
     description_en: form.description_en.trim(),
     description_sr: form.description_sr.trim(),
     cover_image_path: form.cover_image_path,
+    ...coverPositionColumns(form.cover_banner_position, form.cover_card_position),
   }
 
   if (!contentId) {
@@ -118,17 +122,35 @@ export async function saveProject(input: SaveProjectInput): Promise<SaveProjectR
     }
   }
 
-  const keptDbIds: string[] = []
+  const removedIds = originalBlockDbIds.filter(
+    (id) => !blocks.some((block) => block.dbId === id),
+  )
+  if (removedIds.length > 0) {
+    const { error } = await supabase.from('content_blocks').delete().in('id', removedIds)
+    if (error) return { ok: false, error: 'saveFailed' }
+  }
 
-  // Avoid unique (parent, position) violations when reordering existing blocks.
-  for (let position = 0; position < blocks.length; position++) {
-    const block = blocks[position]
+  // Move kept blocks above every current position first. A fixed offset collides
+  // with rows left there by an earlier failed save, and with the slot a new photo takes.
+  const { data: topRow, error: topError } = await supabase
+    .from('content_blocks')
+    .select('position')
+    .eq(parentIdColumn, contentId)
+    .order('position', { ascending: false })
+    .limit(1)
+  if (topError) return { ok: false, error: 'saveFailed' }
+
+  const maxPosition = topRow?.[0]?.position ?? -1
+  const parkAt = maxPosition + blocks.length + 1
+  let parkIndex = 0
+  for (const block of blocks) {
     if (!block.dbId) continue
     const { error } = await supabase
       .from('content_blocks')
-      .update({ position: 10_000 + position })
+      .update({ position: parkAt + parkIndex })
       .eq('id', block.dbId)
     if (error) return { ok: false, error: 'saveFailed' }
+    parkIndex += 1
   }
 
   for (let position = 0; position < blocks.length; position++) {
@@ -147,11 +169,9 @@ export async function saveProject(input: SaveProjectInput): Promise<SaveProjectR
       if (block.dbId) {
         const { error } = await supabase.from('content_blocks').update(payload).eq('id', block.dbId)
         if (error) return { ok: false, error: 'saveFailed' }
-        keptDbIds.push(block.dbId)
       } else {
-        const { data, error } = await supabase.from('content_blocks').insert(payload).select('id').single()
-        if (error || !data) return { ok: false, error: 'saveFailed' }
-        keptDbIds.push(data.id)
+        const { error } = await supabase.from('content_blocks').insert(payload)
+        if (error) return { ok: false, error: 'saveFailed' }
       }
     } else {
       const imageBlock = block as EditorImageBlock
@@ -178,19 +198,11 @@ export async function saveProject(input: SaveProjectInput): Promise<SaveProjectR
       if (block.dbId) {
         const { error } = await supabase.from('content_blocks').update(payload).eq('id', block.dbId)
         if (error) return { ok: false, error: 'saveFailed' }
-        keptDbIds.push(block.dbId)
       } else {
-        const { data, error } = await supabase.from('content_blocks').insert(payload).select('id').single()
-        if (error || !data) return { ok: false, error: 'saveFailed' }
-        keptDbIds.push(data.id)
+        const { error } = await supabase.from('content_blocks').insert(payload)
+        if (error) return { ok: false, error: 'saveFailed' }
       }
     }
-  }
-
-  const toDelete = originalBlockDbIds.filter((id) => !keptDbIds.includes(id))
-  if (toDelete.length > 0) {
-    const { error } = await supabase.from('content_blocks').delete().in('id', toDelete)
-    if (error) return { ok: false, error: 'saveFailed' }
   }
 
   return { ok: true, contentId, slug: form.slug }
@@ -238,6 +250,8 @@ export function emptyForm(): ProjectFormState {
     description_en: '',
     description_sr: '',
     cover_image_path: null,
+    cover_banner_position: COVER_POSITION_CENTER,
+    cover_card_position: COVER_POSITION_CENTER,
     status: 'draft',
     created_at: null,
     updated_at: null,

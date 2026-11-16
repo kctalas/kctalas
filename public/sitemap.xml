@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://kctalas.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kctalas.com/en"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://kctalas.com/sr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kctalas.com/en"/>
+  </url>
+  <url>
+    <loc>https://kctalas.com/sr</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kctalas.com/en"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://kctalas.com/sr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kctalas.com/en"/>
+  </url>
+  <url>
+    <loc>https://kctalas.com/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kctalas.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://kctalas.com/sr/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kctalas.com/en/about"/>
+  </url>
+  <url>
+    <loc>https://kctalas.com/sr/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kctalas.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://kctalas.com/sr/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kctalas.com/en/about"/>
+  </url>
+  <url>
+    <loc>https://kctalas.com/en/projects</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kctalas.com/en/projects"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://kctalas.com/sr/projects"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kctalas.com/en/projects"/>
+  </url>
+  <url>
+    <loc>https://kctalas.com/sr/projects</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kctalas.com/en/projects"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://kctalas.com/sr/projects"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kctalas.com/en/projects"/>
+  </url>
+  <url>
+    <loc>https://kctalas.com/en/call</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kctalas.com/en/call"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://kctalas.com/sr/call"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kctalas.com/en/call"/>
+  </url>
+  <url>
+    <loc>https://kctalas.com/sr/call</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kctalas.com/en/call"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://kctalas.com/sr/call"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kctalas.com/en/call"/>
+  </url>
+  <url>
+    <loc>https://kctalas.com/en/support</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kctalas.com/en/support"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://kctalas.com/sr/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kctalas.com/en/support"/>
+  </url>
+  <url>
+    <loc>https://kctalas.com/sr/support</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kctalas.com/en/support"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://kctalas.com/sr/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kctalas.com/en/support"/>
+  </url>
+  <url>
+    <loc>https://kctalas.com/en/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kctalas.com/en/blog"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://kctalas.com/sr/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kctalas.com/en/blog"/>
+  </url>
+  <url>
+    <loc>https://kctalas.com/sr/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kctalas.com/en/blog"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://kctalas.com/sr/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kctalas.com/en/blog"/>
+  </url>
+  <url>
+    <loc>https://kctalas.com/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kctalas.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://kctalas.com/sr/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kctalas.com/en/contact"/>
+  </url>
+  <url>
+    <loc>https://kctalas.com/sr/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kctalas.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://kctalas.com/sr/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kctalas.com/en/contact"/>
+  </url>
+</urlset>

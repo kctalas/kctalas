@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /en/admin
+Disallow: /sr/admin
+Sitemap: https://kctalas.com/sitemap.xml

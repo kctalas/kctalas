@@ -92,6 +92,10 @@
   "filterDateFrom": "Kreiran od",
   "filterDateTo": "Kreiran do",
   "changeCoverPhoto": "Izmeni naslovnu sliku",
+  "replaceCoverPhoto": "Zameni fotografiju",
+  "adjustThumbnail": "Podesi sličicu",
+  "coverPositionBanner": "Naslovna fotografija",
+  "coverPositionCenter": "Centriraj",
   "projectTitle": "Naslov",
   "shortDescription": "Kratak opis",
   "slug": "Slug",
@@ -176,5 +180,12 @@
   "supportDonationEmailSubject": "Donacija – Kulturni centar Talas",
   "supportReceipt": "Potrebno je da nam pošalješ sliku uplatnice na adresu <email>talas.kulturnicentar@gmail.com</email> i tvoju adresu i mi šaljemo poklone!",
   "supportThanks": "Hvala na poverenju!",
-  "supportImageAlt": "Kulturni Centar Talas"
+  "supportImageAlt": "Kulturni Centar Talas",
+  "seo.home.description": "Nezavisni kulturni centar iz Smedereva—pozorište, film i kreativne radionice za vaše mesto i zajednicu. Zovite i dolazimo!",
+  "seo.about.description": "Kulturni Centar Talas je nezavisna umetnička organizacija koja stvara savremenu, društveno angažovanu kulturu za decu i mlade širom Srbije.",
+  "seo.projects.description": "Pogledajte pozorišne predstave, radionice, filmske projekcije i kulturne programe Kulturnog centra Talas na turneji.",
+  "seo.call.description": "Pozovite Kulturni centar Talas u školu, na festival ili u vaše mesto—predstave, radionice i kulturni programi našeg šarenog kombija.",
+  "seo.support.description": "Donirajte i podržite mlade umetnike i programe Talasa koji donose kulturu zajednicama bez ustanova umetnosti.",
+  "seo.blog.description": "O kulturi: drame, predstave, filmovi, umetnici i ideje Kulturnog centra Talas—razgovor o umetnosti i više perspektiva na svet.",
+  "seo.contact.description": "Kontaktirajte Kulturni centar Talas za gostovanja, saradnje, donacije ili kulturne programe u vašoj zajednici."
 }

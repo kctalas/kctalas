@@ -19,6 +19,7 @@ import {
 } from '../lib/saveProject'
 import { deleteContentById } from '../lib/deleteProject'
 import { publishContentById } from '../lib/publishProject'
+import { COVER_POSITION_CENTER, coverPositionsFromRow } from '../lib/coverPosition'
 import { slugifyEnglishTitle } from '../lib/slug'
 import { supabase } from '../lib/supabase'
 import { AutoResizeTextarea } from './AutoResizeTextarea'
@@ -55,6 +56,10 @@ function formFromContentRow(row: {
   description_en: string
   description_sr: string
   cover_image_path: string | null
+  cover_banner_x: number | null
+  cover_banner_y: number | null
+  cover_card_x: number | null
+  cover_card_y: number | null
   status: 'draft' | 'published'
   created_at: string
   updated_at: string
@@ -74,6 +79,7 @@ function formFromContentRow(row: {
     created_at: row.created_at,
     updated_at: row.updated_at,
     published_at: row.published_at,
+    ...coverPositionsFromRow(row),
     author: authorFromRow(row.author_id, row.users),
   }
 }
@@ -122,6 +128,10 @@ export function AdminProjectEditPage({ kind }: AdminProjectEditPageProps) {
     created_at,
     updated_at,
     published_at,
+    cover_banner_x,
+    cover_banner_y,
+    cover_card_x,
+    cover_card_y,
     author_id,
     users ( first_name, last_name )
   `
@@ -346,9 +356,25 @@ export function AdminProjectEditPage({ kind }: AdminProjectEditPageProps) {
       <ProjectCoverField
         coverPath={form.cover_image_path}
         pendingFile={pendingCoverFile}
+        bannerPosition={form.cover_banner_position}
+        cardPosition={form.cover_card_position}
         onPendingFileChange={(file) => {
           markDirty()
           setPendingCoverFile(file)
+          if (!file) return
+          setForm((prev) => ({
+            ...prev,
+            cover_banner_position: COVER_POSITION_CENTER,
+            cover_card_position: COVER_POSITION_CENTER,
+          }))
+        }}
+        onBannerPositionChange={(position) => {
+          markDirty()
+          setForm((prev) => ({ ...prev, cover_banner_position: position }))
+        }}
+        onCardPositionChange={(position) => {
+          markDirty()
+          setForm((prev) => ({ ...prev, cover_card_position: position }))
         }}
       />
 

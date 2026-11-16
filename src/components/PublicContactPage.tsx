@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
 import { Button } from './Button'
 import { PageBanner } from './PageBanner'
+import { Seo } from './Seo'
 import { Toast } from './Toast'
 
 const fieldClass =
@@ -65,6 +66,7 @@ export function PublicContactPage() {
 
   return (
     <>
+      <Seo title={t('contact')} description={t('seo.contact.description')} path="contact" />
       <Toast message={toastMessage} />
       <PageBanner title={t('contact')} />
       <main className="public-page-x flex justify-center py-8 sm:py-10">

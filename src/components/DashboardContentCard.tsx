@@ -3,6 +3,7 @@ import { isLanguage, type Language } from '../i18n'
 import type { ContentKind } from '../lib/contentKind'
 import { adminEditPath } from '../lib/contentKind'
 import { contentImageUrl } from '../lib/contentImages'
+import { coverObjectPosition } from '../lib/coverPosition'
 import { projectTitle, type ProjectListRow } from '../lib/projects'
 
 type DashboardContentCardProps = {
@@ -26,6 +27,7 @@ export function DashboardContentCard({ kind, item }: DashboardContentCardProps) 
             src={contentImageUrl(item.cover_image_path)}
             alt=""
             className="absolute inset-0 h-full w-full object-cover"
+            style={{ objectPosition: coverObjectPosition(item.cover_card_position) }}
           />
         ) : null}
       </div>

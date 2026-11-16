@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router'
 import { isLanguage, type Language } from '../i18n'
 import { contentImageUrl } from '../lib/contentImages'
+import { coverObjectPosition } from '../lib/coverPosition'
 import type { PublicProjectListRow } from '../lib/loadPublicProjects'
 import { projectDescription, projectTitle } from '../lib/projects'
 
@@ -34,8 +35,9 @@ export function PublicProjectCard({ project }: PublicProjectCardProps) {
             {project.cover_image_path ? (
               <img
                 src={contentImageUrl(project.cover_image_path)}
-                alt=""
+                alt={title}
                 className="block aspect-[16/10] h-auto w-full object-cover"
+                style={{ objectPosition: coverObjectPosition(project.cover_card_position) }}
               />
             ) : (
               <div className="aspect-[16/10] w-full" aria-hidden />

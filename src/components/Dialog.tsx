@@ -50,7 +50,7 @@ export function Dialog({
     >
       <div
         role="document"
-        className={`w-full max-w-lg rounded-lg border border-blue-800/20 bg-white p-0 shadow-lg ${className}`.trim()}
+        className={`w-full rounded-lg border border-blue-800/20 bg-white p-0 shadow-lg ${className.includes('max-w-') ? className : `max-w-lg ${className}`}`.trim()}
         onClick={(e) => e.stopPropagation()}
         onMouseDown={(e) => e.stopPropagation()}
       >

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router'
 import { isLanguage, type Language } from '../i18n'
 import { contentImageUrl } from '../lib/contentImages'
+import { coverObjectPosition } from '../lib/coverPosition'
 import type { PublicProjectListRow } from '../lib/loadPublicProjects'
 import { projectTitle } from '../lib/projects'
 import { routeHref } from '../routes'
@@ -169,7 +170,11 @@ export function ProjectCarousel({ projects, className = '' }: ProjectCarouselPro
                 aria-hidden={!isCurrent}
                 draggable={false}
                 className={`pointer-events-none absolute top-1/2 left-1/2 h-full w-full rounded-3xl object-cover ${motion}`}
-                style={{ ...pose, zIndex: end.zIndex }}
+                style={{
+                  ...pose,
+                  zIndex: end.zIndex,
+                  objectPosition: coverObjectPosition(cover.cover_card_position),
+                }}
                 onAnimationEnd={(event) => {
                   if (event.animationName !== 'project-move-l-enter' && event.animationName !== 'project-move-r-enter') return
                   finishRef.current()

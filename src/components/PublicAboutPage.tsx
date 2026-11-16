@@ -4,6 +4,7 @@ import { isLanguage, type Language } from '../i18n'
 import { ABOUT_FEATURED_PROJECT_SLUG } from '../siteLinks'
 import { routeHref } from '../routes'
 import { PageBanner } from './PageBanner'
+import { Seo } from './Seo'
 
 const bodyClass = 'text-base leading-relaxed text-black sm:text-lg'
 
@@ -15,6 +16,7 @@ export function PublicAboutPage() {
 
   return (
     <>
+      <Seo title={t('about')} description={t('seo.about.description')} path="about" />
       <PageBanner title={t('about')} />
       <main className="public-page-x py-8 sm:py-10">
       <div className="w-full space-y-6">

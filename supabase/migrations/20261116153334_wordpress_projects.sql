@@ -1,0 +1,2 @@
+-- applied via MCP
+-- WordPress project copy (Serbian + English). Idempotent: skips when slug already exists.

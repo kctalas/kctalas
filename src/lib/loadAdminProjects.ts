@@ -1,3 +1,4 @@
+import { coverPositionsFromRow } from './coverPosition'
 import type { ContentKind } from './contentKind'
 import { contentKindConfig } from './contentKind'
 import type { ProjectListRow } from './projects'
@@ -24,6 +25,10 @@ export async function loadAdminContent(kind: ContentKind) {
       description_sr,
       status,
       cover_image_path,
+      cover_banner_x,
+      cover_banner_y,
+      cover_card_x,
+      cover_card_y,
       created_at,
       published_at,
       author_id,
@@ -47,6 +52,7 @@ export async function loadAdminContent(kind: ContentKind) {
       description_sr: row.description_sr,
       status: row.status,
       cover_image_path: row.cover_image_path,
+      ...coverPositionsFromRow(row),
       created_at: row.created_at,
       published_at: row.published_at,
       author_id: row.author_id,

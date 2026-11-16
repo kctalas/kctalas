@@ -3,6 +3,7 @@ import { Trans, useTranslation } from 'react-i18next'
 import { TALAS_IPS_DONATION_RSD, type IpsQrParams } from '../lib/ipsQr'
 import { Dialog } from './Dialog'
 import { IpsQrCode } from './IpsQrCode'
+import { Seo } from './Seo'
 import { Toast } from './Toast'
 
 const bodyClass = 'text-base leading-relaxed text-black sm:text-lg'
@@ -118,6 +119,7 @@ export function PublicSupportPage() {
 
   return (
     <>
+      <Seo title={t('supportHeadline')} description={t('seo.support.description')} path="support" />
       <div className="relative">
         <img
           src="/home/support_banner.png"

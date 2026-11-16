@@ -1,3 +1,4 @@
+import { coverPositionsFromRow } from './coverPosition'
 import type { ProjectAuthor, PublicContentBlock } from './projects'
 import type { PublicProjectListRow } from './loadPublicProjects'
 import { supabase } from './supabase'
@@ -27,6 +28,10 @@ const listSelect = `
   description_en,
   description_sr,
   cover_image_path,
+  cover_banner_x,
+  cover_banner_y,
+  cover_card_x,
+  cover_card_y,
   published_at,
   author_id,
   users ( first_name, last_name )
@@ -40,6 +45,10 @@ function mapBlogRow(row: {
   description_en: string
   description_sr: string
   cover_image_path: string | null
+  cover_banner_x: number | null
+  cover_banner_y: number | null
+  cover_card_x: number | null
+  cover_card_y: number | null
   published_at: string | null
   author_id: string
   users: UserNameRow | UserNameRow[] | null
@@ -53,6 +62,7 @@ function mapBlogRow(row: {
     description_en: row.description_en,
     description_sr: row.description_sr,
     cover_image_path: row.cover_image_path,
+    ...coverPositionsFromRow(row),
     published_at: row.published_at,
     author_id: row.author_id,
     author: user

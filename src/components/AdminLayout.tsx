@@ -5,6 +5,7 @@ import { useAuth } from '../auth-context'
 import { isLanguage, type Language } from '../i18n'
 import { routeHref, routes } from '../routes'
 import { useMediaQuery } from '../lib/useMediaQuery'
+import { Seo } from './Seo'
 import { Button } from './Button'
 import { HamburgerIcon } from './HamburgerIcon'
 
@@ -62,7 +63,9 @@ export function AdminLayout() {
   const showTabletCollapse = isTabletUp && !isDesktopUp && sidebarOpen
 
   return (
-    <div className="flex min-h-svh">
+    <>
+      <Seo title={t('admin')} description={t('admin')} path="admin" noindex />
+      <div className="flex min-h-svh">
       {!isTabletUp && sidebarOpen ? (
         <button
           type="button"
@@ -157,5 +160,6 @@ export function AdminLayout() {
         <Outlet />
       </div>
     </div>
+    </>
   )
 }

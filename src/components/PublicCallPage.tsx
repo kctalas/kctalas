@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router'
 import { isLanguage, type Language } from '../i18n'
 import { routeHref } from '../routes'
 import { PageBanner } from './PageBanner'
+import { Seo } from './Seo'
 
 const bodyClass = 'text-base leading-relaxed text-black sm:text-lg'
 const sectionTitleClass = 'pt-2 font-display text-xl text-blue-800 sm:text-2xl'
@@ -18,6 +19,7 @@ export function PublicCallPage() {
 
   return (
     <>
+      <Seo title={t('callPageTitle')} description={t('seo.call.description')} path="call" />
       <PageBanner title={t('callPageTitle')} />
       <main className="public-page-x py-8 sm:py-10">
       <div className="w-full space-y-6">

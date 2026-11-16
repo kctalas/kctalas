@@ -1,3 +1,4 @@
+import { withCoverPositions } from './coverPosition'
 import type { ContentBlockRow, ProjectListRow } from './projects'
 import { supabase } from './supabase'
 
@@ -10,9 +11,12 @@ export type PublicProjectListRow = Pick<
   | 'description_en'
   | 'description_sr'
   | 'cover_image_path'
+  | 'cover_banner_position'
+  | 'cover_card_position'
 >
 
 export type PublicProjectDetail = PublicProjectListRow & {
+  published_at: string | null
   blocks: ContentBlockRow[]
 }
 
@@ -20,7 +24,7 @@ export async function loadPublishedProjects() {
   const { data, error } = await supabase
     .from('projects')
     .select(
-      'id, slug, title_en, title_sr, description_en, description_sr, cover_image_path',
+      'id, slug, title_en, title_sr, description_en, description_sr, cover_image_path, cover_banner_x, cover_banner_y, cover_card_x, cover_card_y',
     )
     .eq('status', 'published')
     .order('published_at', { ascending: false })
@@ -29,14 +33,17 @@ export async function loadPublishedProjects() {
     return { projects: [] as PublicProjectListRow[], error: error.message }
   }
 
-  return { projects: (data ?? []) as PublicProjectListRow[], error: null }
+  return {
+    projects: (data ?? []).map((row) => withCoverPositions(row) as PublicProjectListRow),
+    error: null,
+  }
 }
 
 export async function loadPublishedProject(slug: string) {
   const { data: project, error: projectError } = await supabase
     .from('projects')
     .select(
-      'id, slug, title_en, title_sr, description_en, description_sr, cover_image_path',
+      'id, slug, title_en, title_sr, description_en, description_sr, cover_image_path, cover_banner_x, cover_banner_y, cover_card_x, cover_card_y, published_at',
     )
     .eq('slug', slug)
     .eq('status', 'published')
@@ -62,9 +69,20 @@ export async function loadPublishedProject(slug: string) {
     return { project: null, error: blocksError.message }
   }
 
+  const row = withCoverPositions(
+    project as PublicProjectListRow & {
+      published_at: string | null
+      cover_banner_x: number
+      cover_banner_y: number
+      cover_card_x: number
+      cover_card_y: number
+    },
+  )
+
   return {
     project: {
-      ...(project as PublicProjectListRow),
+      ...row,
+      published_at: row.published_at ?? null,
       blocks: (blocks ?? []) as ContentBlockRow[],
     },
     error: null,

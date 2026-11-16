@@ -1,4 +1,5 @@
 import type { Language } from '../i18n'
+import type { CoverPosition } from './coverPosition'
 import { emptyTipTapDoc, type TipTapDoc } from './tiptapDoc'
 
 export type ContentStatus = 'draft' | 'published'
@@ -21,6 +22,8 @@ export type ProjectListRow = ProjectLocalizedFields & {
   slug: string
   status: ContentStatus
   cover_image_path: string | null
+  cover_banner_position: CoverPosition
+  cover_card_position: CoverPosition
   created_at: string
   published_at: string | null
   author_id: string
@@ -61,6 +64,8 @@ export type ProjectEditorRow = {
   description_sr: string
   status: ContentStatus
   cover_image_path: string | null
+  cover_banner_position: CoverPosition
+  cover_card_position: CoverPosition
 }
 
 export type ContentBlockRow = {

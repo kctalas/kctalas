@@ -2,6 +2,7 @@ import { type FormEvent, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Navigate, useNavigate, useParams } from 'react-router'
 import { useAuth } from '../auth-context'
+import { Seo } from './Seo'
 
 export function LoginPage() {
   const { t } = useTranslation()
@@ -31,7 +32,9 @@ export function LoginPage() {
   }
 
   return (
-    <main className="flex min-h-svh items-center justify-center px-4">
+    <>
+      <Seo title={t('login')} description={t('login')} path="admin/login" noindex />
+      <main className="flex min-h-svh items-center justify-center px-4">
       <form onSubmit={(event) => void onSubmit(event)} className="flex w-full max-w-sm flex-col gap-4">
         <label className="flex flex-col gap-1 text-green-800">
           {t('email')}
@@ -67,5 +70,6 @@ export function LoginPage() {
         </button>
       </form>
     </main>
+    </>
   )
 }

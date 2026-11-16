@@ -4,6 +4,7 @@ import type { ContentKind } from '../lib/contentKind'
 import { adminEditPath, contentKindConfig } from '../lib/contentKind'
 import { isLanguage, type Language } from '../i18n'
 import { contentImageUrl } from '../lib/contentImages'
+import { coverObjectPosition } from '../lib/coverPosition'
 import { projectDescription, projectTitle, type ProjectListRow } from '../lib/projects'
 import { Button } from './Button'
 import { ButtonIcon, buttonIcons } from './ButtonIcon'
@@ -78,6 +79,7 @@ export function ProjectAdminCard({ kind, project, onPublish, onDelete }: Project
             src={contentImageUrl(project.cover_image_path)}
             alt=""
             className="h-full w-full object-cover sm:min-h-40"
+            style={{ objectPosition: coverObjectPosition(project.cover_card_position) }}
           />
         ) : (
           <div className="h-full min-h-36 w-full sm:min-h-40" aria-hidden />

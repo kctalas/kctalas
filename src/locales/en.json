@@ -92,6 +92,10 @@
   "filterDateFrom": "Created from",
   "filterDateTo": "Created to",
   "changeCoverPhoto": "Change cover photo",
+  "replaceCoverPhoto": "Replace photo",
+  "adjustThumbnail": "Adjust thumbnail",
+  "coverPositionBanner": "Banner photo",
+  "coverPositionCenter": "Center",
   "projectTitle": "Title",
   "shortDescription": "Short description",
   "slug": "Slug",
@@ -176,5 +180,12 @@
   "supportDonationEmailSubject": "Donation – Kulturni Centar Talas",
   "supportReceipt": "Please send us a photo of the payment slip to <email>talas.kulturnicentar@gmail.com</email> along with your address, and we will send you the gifts!",
   "supportThanks": "Thank you for your trust!",
-  "supportImageAlt": "Kulturni Centar Talas"
+  "supportImageAlt": "Kulturni Centar Talas",
+  "seo.home.description": "Independent cultural center from Smederevo bringing theatre, film, and creative workshops to towns and communities. Call us and we'll come!",
+  "seo.about.description": "Kulturni Centar Talas is an independent arts organization creating contemporary, socially engaged culture for children and young people across Serbia.",
+  "seo.projects.description": "Explore theatre performances, workshops, film screenings, and cultural programs from Kulturni centar Talas on tour across Serbia.",
+  "seo.call.description": "Invite Kulturni centar Talas to your school, festival, or town. Book performances, workshops, and cultural programs—we travel with our colorful van.",
+  "seo.support.description": "Donate to support young artists and help Kulturni centar Talas bring culture to communities without arts institutions.",
+  "seo.blog.description": "On culture: drama, performances, film, artists, and ideas from Kulturni centar Talas—talking about art and seeing the world from many perspectives.",
+  "seo.contact.description": "Contact Kulturni centar Talas about bookings, collaborations, donations, or cultural programs for your community."
 }

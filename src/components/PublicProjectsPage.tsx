@@ -4,6 +4,7 @@ import { loadPublishedProjects } from '../lib/loadPublicProjects'
 import type { PublicProjectListRow } from '../lib/loadPublicProjects'
 import { PublicProjectCard } from './PublicProjectCard'
 import { PageBanner } from './PageBanner'
+import { Seo } from './Seo'
 import { Skeleton } from './Skeleton'
 
 function PublicProjectCardSkeleton() {
@@ -52,6 +53,7 @@ export function PublicProjectsPage() {
 
   return (
     <>
+      <Seo title={t('projects')} description={t('seo.projects.description')} path="projects" />
       <PageBanner title={t('projects')} />
       <main className="public-page-x w-full py-8 sm:py-10">
       <div>
